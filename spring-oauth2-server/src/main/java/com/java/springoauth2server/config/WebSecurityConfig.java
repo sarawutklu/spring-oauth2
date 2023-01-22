@@ -23,13 +23,13 @@ public class WebSecurityConfig {
         return http.formLogin()
                 .and()
                 .authorizeHttpRequests()
-                .anyRequest().permitAll()
+                .anyRequest().authenticated()
                 .and().build();
     }
 
     @Bean
     public UserDetailsService userDetailsService() {
-        var u1 = User.withUsername("bill").password("12345").authorities("read").build();
+        var u1 = User.withUsername("admin").password("12345").authorities("read").build();
 
         var uds = new InMemoryUserDetailsManager();
         uds.createUser(u1);
