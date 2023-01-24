@@ -25,8 +25,8 @@ public class WebSecurityConfig {
         return http.formLogin()
                 .and()
                 .authorizeHttpRequests()
-                .requestMatchers("/singup","/code-challenge").permitAll()
-                .anyRequest().permitAll()
+                .requestMatchers("/singup").permitAll()
+                .anyRequest().authenticated()
                 .and().build();
     }
 
