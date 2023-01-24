@@ -25,24 +25,10 @@ public class WebSecurityConfig {
         return http.formLogin()
                 .and()
                 .authorizeHttpRequests()
-//                .requestMatchers("/singup").permitAll()
+                .requestMatchers("/singup","/code-challenge").permitAll()
                 .anyRequest().permitAll()
                 .and().build();
     }
-
-//    @Bean
-//    public UserDetailsService userDetailsService() {
-//        var u1 = User.withUsername("admin").password("12345").authorities("read").build();
-//
-//        var uds = new InMemoryUserDetailsManager();
-//        uds.createUser(u1);
-//        return uds;
-//    }
-
-//    @Bean
-//    public PasswordEncoder passwordEncoder() {
-//        return PasswordEncoderFactories.createDelegatingPasswordEncoder();
-//    }
 
     @Bean
     public PasswordEncoder encoder() {
