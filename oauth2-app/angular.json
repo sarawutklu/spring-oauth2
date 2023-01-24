@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "oauth2-pp": {
+    "oauth2-app": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/oauth2-pp",
+            "outputPath": "dist/oauth2-app",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": [
@@ -65,10 +65,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "oauth2-pp:build:production"
+              "browserTarget": "oauth2-app:build:production"
             },
             "development": {
-              "browserTarget": "oauth2-pp:build:development"
+              "browserTarget": "oauth2-app:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -76,7 +76,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "oauth2-pp:build"
+            "browserTarget": "oauth2-app:build"
           }
         },
         "test": {

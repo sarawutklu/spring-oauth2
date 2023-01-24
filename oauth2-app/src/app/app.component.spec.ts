@@ -20,16 +20,16 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'oauth2-pp'`, () => {
+  it(`should have as title 'oauth2-app'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('oauth2-pp');
+    expect(app.title).toEqual('oauth2-app');
   });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('oauth2-pp app is running!');
+    expect(compiled.querySelector('.content span')?.textContent).toContain('oauth2-app app is running!');
   });
 });
