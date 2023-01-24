@@ -1,6 +1,7 @@
 package com.java.springoauth2server.config;
 
 
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.stereotype.Component;
 import org.springframework.web.cors.CorsConfiguration;
@@ -18,11 +19,11 @@ public class CORSCustomizer {
                 cc.setAllowCredentials(true);
                 cc.setAllowedOrigins(List.of("http://127.0.0.1:4200/"));
                 cc.setAllowedHeaders(List.of("*"));
-                cc.setAllowedMethods(List.of("*"));
+                cc.setAllowedMethods(List.of(HttpMethod.POST.name(), HttpMethod.GET.name()));
                 return cc;
             };
 
             c.configurationSource(source);
-        });
+        }).csrf().disable();
     }
 }

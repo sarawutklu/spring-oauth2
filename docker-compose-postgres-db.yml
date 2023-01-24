@@ -1,0 +1,16 @@
+version: '3.8'
+services:
+  postgresdb:
+    image: postgres
+    restart: always
+    container_name: postgres
+    environment:
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=P@ssw0rd
+    ports:
+      - '5432:5432'
+    volumes: 
+      - postgresdb:/var/lib/postgresql/data
+volumes:
+  postgresdb:
+    

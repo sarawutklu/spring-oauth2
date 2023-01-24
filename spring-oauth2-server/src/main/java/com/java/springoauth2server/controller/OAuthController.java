@@ -1,7 +1,14 @@
 package com.java.springoauth2server.controller;
 
+import com.java.springoauth2server.models.UserRequest;
+import com.java.springoauth2server.service.UserService;
 import com.java.springoauth2server.util.PkceUtil;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.io.UnsupportedEncodingException;
@@ -18,7 +25,10 @@ import java.util.logging.Logger;
 @RestController
 public class OAuthController {
 
-    @GetMapping("/code_challenge")
+    @Autowired
+    private UserService userService;
+
+    @GetMapping("/code-challenge")
     public Map<String, String> getCodeChallenge() {
         Map<String, String> response = new HashMap<>();
         try {
@@ -32,6 +42,16 @@ public class OAuthController {
             Logger.getLogger(OAuthController.class.getName()).log(Level.SEVERE, null, ex);
         }
         return response;
+    }
+
+    @PostMapping("/singup")
+    public ResponseEntity<String> singUp(@RequestBody UserRequest user) {
+        try {
+            userService.singup(user);
+        }catch (Exception ex){
+            return new ResponseEntity<>("sign up failure!", HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+        return new ResponseEntity<>("sign up successful!", HttpStatus.CREATED);
     }
 
 
