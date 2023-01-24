@@ -1,5 +1,6 @@
 package com.java.springoauth2server.controller;
 
+import com.java.springoauth2server.models.StringResponse;
 import com.java.springoauth2server.models.UserRequest;
 import com.java.springoauth2server.service.UserService;
 import com.java.springoauth2server.util.PkceUtil;
@@ -45,13 +46,13 @@ public class OAuthController {
     }
 
     @PostMapping("/singup")
-    public ResponseEntity<String> singUp(@RequestBody UserRequest user) {
+    public ResponseEntity<StringResponse> singUp(@RequestBody UserRequest user) {
         try {
             userService.singup(user);
         }catch (Exception ex){
-            return new ResponseEntity<>("sign up failure!", HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<StringResponse>(new StringResponse("sign up failure!"), HttpStatus.INTERNAL_SERVER_ERROR);
         }
-        return new ResponseEntity<>("sign up successful!", HttpStatus.CREATED);
+        return new ResponseEntity<StringResponse>(new StringResponse("sign up successful!"), HttpStatus.CREATED);
     }
 
 

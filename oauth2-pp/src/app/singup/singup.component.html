@@ -1,21 +1,22 @@
 <body>
     <div class="row">
       <div class="col-md-12">
-        <form>
+        <div class="dev-form">
           <h1> Sign Up </h1>
           <fieldset>
             <legend><span class="number">1</span> Your Basic Info</legend>
-            <label for="email">Email:</label>
-            <input type="email" id="mail" name="user_email">
+            <label for="email">Username:</label>
+            <input  [(ngModel)]="username" type="email" id="mail" name="user_email">
             <label for="password">Password:</label>
-            <input type="password" id="password" name="user_password">
+            <input [(ngModel)]="password" type="password" id="password" name="user_password">
             <label>Role:</label>
-            <input type="radio" id="under_13" value="1" name="user_age"><label for="under_13" class="light">Admin</label><br>
-            <input type="radio" id="over_13" value="2" name="user_age"><label for="over_13" class="light">User</label>
+            <input type="radio" id="under_13" value="1" [(ngModel)]="roles" name="user_age"><label for="under_13" class="light">Admin</label><br>
+            <input type="radio" id="over_13" value="2" [(ngModel)]="roles" name="user_age"><label for="over_13" class="light">User</label>
           </fieldset>
-          <button type="submit">Sign Up</button>
+          <p>{{message}}</p>
+          <button type="button" (click)="singup()">Sign Up</button>
           <button type="button" (click)="redirect()">Login</button>
-        </form>
+        </div>
       </div>
     </div>
   </body>
